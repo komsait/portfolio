@@ -110,7 +110,6 @@ const Projects = () => {
         {projects.map((project, index) => {
           const projectRef = useRef<HTMLDivElement>(null);
           const isInView = useInView(projectRef, { 
-            threshold: 0.3,
             margin: "-20% 0px -20% 0px"
           });
 
