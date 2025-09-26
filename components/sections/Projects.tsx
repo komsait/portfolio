@@ -1,44 +1,69 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Github, ExternalLink, Calendar, Tag } from 'lucide-react';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { Github, ExternalLink, Calendar, Tag, ArrowRight, Play } from 'lucide-react';
+import { useRef, useState } from 'react';
 
 const Projects = () => {
+  const [activeProject, setActiveProject] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
   const projects = [
     {
       id: 1,
-      title: 'Exploratory Data Analysis on Financial Transaction Dataset',
-      description: 'This project is a full Exploratory Data Analysis (EDA) pipeline on financial transaction datasets, covering: Data extraction from PostgreSQL, Data cleaning and preprocessing, Outlier detection and treatment, Feature engineering for users, cards, and transactions, Aggregated customer and card profiling datasets, Data visualization (matplotlib & seaborn), Export to SQL for downstream analytics and Power BI dashboards.',
-      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: 'EXPLORATORY DATA ANALYSIS',
+      subtitle: 'Financial Transaction Dataset',
+      description: 'A comprehensive EDA pipeline on financial transaction datasets, covering data extraction from PostgreSQL, cleaning, preprocessing, outlier detection, feature engineering, and advanced visualizations.',
+      story: 'This project was born from the need to understand complex financial transaction patterns while providing meaningful insights through advanced statistical analysis and visualization techniques.',
+      features: [
+        'Data extraction from PostgreSQL databases',
+        'Data cleaning and preprocessing',
+        'Advanced outlier detection and treatment',
+        'Feature engineering for users, cards, and transactions',
+        'Interactive data visualizations with Matplotlib & Seaborn',
+        'Export to SQL for downstream analytics and Power BI dashboards'
+      ],
+      image: 'https://images.pexels.com/photos/577210/pexels-photo-577210.jpeg?auto=compress&cs=tinysrgb&w=800',
+      mockupImage: 'https://images.pexels.com/photos/577210/pexels-photo-577210.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Python', 'PostgreSQL', 'Pandas', 'Matplotlib', 'Seaborn', 'Power BI'],
       github: 'https://github.com/komsait/EDA-Financial-Transactions',
       demo: 'https://github.com/komsait/EDA-Financial-Transactions',
       status: 'Completed',
-      category: 'Data Analysis'
+      category: 'Data Analysis',
+      color: 'from-purple-500 to-purple-700'
     },
+    {
+      id: 2,
+      title: 'BRAIN TUMOR AI DETECTOR',
+      subtitle: 'Deep Learning for Medical Imaging',
+      description: 'A deep learning model that detects brain tumors from MRI scans with high accuracy. Built using TensorFlow and transfer learning to support medical diagnosis.',
+      story: 'This project was born from the need to assist medical professionals in early detection of brain tumors through advanced AI technology. The challenge was to create a reliable model that could analyze complex medical imaging data with high precision.',
+      features: [
+        'High-accuracy brain tumor detection',
+        'TensorFlow deep learning implementation',
+        'Transfer learning optimization',
+        'Medical imaging preprocessing',
+        'Real-time MRI scan analysis',
+        'Support for medical diagnosis workflows'
+      ],
+      image: 'https://images.pexels.com/photos/5723883/pexels-photo-5723883.jpeg?auto=compress&cs=tinysrgb&w=800',
+      mockupImage: 'https://images.pexels.com/photos/5723883/pexels-photo-5723883.jpeg?auto=compress&cs=tinysrgb&w=800',
+      technologies: ['Python', 'TensorFlow', 'Keras', 'OpenCV', 'NumPy', 'Matplotlib'],
+      github: 'https://github.com/komsait/brain-tumor-ai-detector',
+      demo: 'https://brain-tumor-ai-detector.vercel.app',
+      status: 'In Development',
+      category: 'AI/ML',
+      color: 'from-pink-500 to-pink-700'
+    }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: 'spring' as const,
-        stiffness: 100,
-      },
-    },
-  };
+  // Transform values for zoom effect
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.8]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.3, 1, 1, 0.3]);
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -60,92 +85,166 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="section-padding bg-gradient-to-b from-gray-900 to-gray-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="relative min-h-screen bg-gray-950">
+      {/* Projects Overview Section - Zoomed Out */}
+      <div className="relative h-screen flex items-center justify-center overflow-hidden">
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="space-y-16"
+          style={{ scale, opacity }}
+          className="text-center z-10"
         >
-          {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black gradient-text mb-6">
-              Featured Projects
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              A showcase of innovative solutions, from AI-powered applications to modern web experiences
-            </p>
-          </motion.div>
+          <h1 className="text-8xl md:text-9xl font-black gradient-text mb-8 tracking-tight">
+            PROJECTS
+          </h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Our work is the product of careful analysis, creative thinking, and a commitment to excellence.
+          </p>
+        </motion.div>
+        
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-gray-950" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+      </div>
 
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
-              <motion.div
-                key={project.id}
-                variants={itemVariants}
-                whileHover={{ y: -10 }}
-                className="glass-card overflow-hidden group hover:glow-effect transition-all duration-300"
-              >
-                {/* Project Image */}
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  
-                  {/* Status Badge */}
-                  <div className="absolute top-4 right-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold text-white ${getStatusColor(project.status)}`}>
-                      {project.status}
-                    </span>
-                  </div>
-                  
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-black/50 text-white border border-white/20">
-                      {project.category}
-                    </span>
-                  </div>
+      {/* Individual Project Sections */}
+      <div ref={containerRef} className="relative">
+        {projects.map((project, index) => {
+          const projectRef = useRef<HTMLDivElement>(null);
+          const isInView = useInView(projectRef, { 
+            threshold: 0.3,
+            margin: "-20% 0px -20% 0px"
+          });
+
+          return (
+            <motion.div
+              key={project.id}
+              ref={projectRef}
+              className={`relative min-h-screen flex items-center justify-center ${
+                index % 2 === 0 ? 'bg-gray-950' : 'bg-gray-900'
+              }`}
+              initial={{ opacity: 0.3, scale: 0.8 }}
+              animate={{ 
+                opacity: isInView ? 1 : 0.3,
+                scale: isInView ? 1 : 0.8
+              }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+            >
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+                {/* Project Mockup */}
+                <div className="relative">
+                  <motion.div
+                    className={`relative p-8 rounded-2xl bg-gradient-to-br ${project.color} shadow-2xl`}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {/* Mobile Mockup */}
+                    <div className="relative mx-auto w-64 h-[500px] bg-black rounded-[2rem] p-2 shadow-2xl">
+                      <div className="w-full h-full bg-white rounded-[1.5rem] overflow-hidden relative">
+                        <img
+                          src={project.mockupImage}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                        <div className="absolute bottom-8 left-4 right-4 text-white">
+                          <h3 className="text-lg font-bold mb-2">{project.title}</h3>
+                          <p className="text-sm opacity-90">{project.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Floating "VIEW" circles */}
+                    <motion.div
+                      className="absolute -top-4 -right-4 w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-semibold text-sm"
+                      animate={{ 
+                        scale: [1, 1.1, 1],
+                        opacity: [0.7, 1, 0.7]
+                      }}
+                      transition={{ 
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      VIEW
+                    </motion.div>
+                  </motion.div>
                 </div>
 
-                {/* Project Content */}
-                <div className="p-6 space-y-4">
-                  <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-200">
-                    {project.title}
-                  </h3>
-                  
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
+                {/* Project Details */}
+                <div className={`space-y-8 ${isInView ? 'opacity-100' : 'opacity-30'} transition-opacity duration-500`}>
+                  {/* Project Info */}
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-4 mb-4">
+                      <span className="text-sm font-medium text-gray-400 uppercase tracking-wider">
+                        {String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
+                      </span>
+                      <div className="flex gap-2">
+                        <span className="px-3 py-1 bg-purple-600/20 text-purple-300 rounded-full text-xs font-medium border border-purple-500/30">
+                          {project.category}
+                        </span>
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium text-white ${getStatusColor(project.status)}`}>
+                          {project.status}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+                      {project.title}
+                    </h2>
+                    
+                    <p className="text-lg text-gray-300 mb-6">
+                      {project.subtitle}
+                    </p>
+                  </div>
+
+                  {/* Project Story */}
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-bold text-white">The Story</h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      {project.story}
+                    </p>
+                  </div>
+
+                  {/* Features */}
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-bold text-white">Key Features</h3>
+                    <ul className="space-y-2">
+                      {project.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center gap-3 text-gray-300">
+                          <div className="w-2 h-2 bg-purple-400 rounded-full" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-purple-600/20 text-purple-300 rounded text-xs font-medium border border-purple-500/30"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-bold text-white">Technologies</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 bg-gray-800 text-gray-200 rounded-full text-sm font-medium border border-gray-700"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-3 pt-4">
+                  <div className="flex gap-4 pt-4">
                     <motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors duration-200 text-sm font-medium"
+                      className="flex items-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full font-semibold transition-all duration-200 border border-gray-600"
                     >
-                      <Github size={16} />
-                      Code
+                      <Github size={18} />
+                      View Code
                     </motion.a>
                     
                     <motion.a
@@ -154,36 +253,19 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors duration-200 text-sm font-medium"
+                      className="flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-full font-semibold transition-all duration-200 glow-effect"
                     >
-                      <ExternalLink size={16} />
-                      Demo
+                      <Play size={18} />
+                      Live Demo
                     </motion.a>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Call to Action */}
-          <motion.div variants={itemVariants} className="text-center">
-            <p className="text-gray-300 mb-6">
-              Want to see more? Check out my GitHub for additional projects and contributions.
-            </p>
-            <motion.a
-              href="https://github.com/komsait"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-full font-semibold text-lg transition-all duration-300 glow-effect"
-            >
-              <Github size={24} />
-              View All Projects on GitHub
-            </motion.a>
-          </motion.div>
-        </motion.div>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
+
     </section>
   );
 };

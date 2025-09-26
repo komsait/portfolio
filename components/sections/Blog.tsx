@@ -72,36 +72,6 @@ const Blog = () => {
             </div>
           </motion.div>
 
-          {/* Newsletter Signup */}
-          <motion.div variants={itemVariants} className="glass-card p-8 lg:p-12 text-center">
-            <div className="max-w-2xl mx-auto space-y-6">
-              <div className="text-4xl mb-4">📬</div>
-              <h3 className="text-2xl lg:text-3xl font-bold text-white">
-                Stay Updated
-              </h3>
-              <p className="text-gray-300">
-                Get notified when I publish new articles about software development, AI, and technology trends.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-colors duration-200"
-                />
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors duration-200 flex items-center justify-center gap-2"
-                >
-                  <BookOpen size={20} />
-                  Subscribe
-                </motion.button>
-              </div>
-              <p className="text-xs text-gray-400">
-                No spam, ever. Unsubscribe at any time.
-              </p>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -1,40 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Send, Github, Linkedin, MessageCircle } from 'lucide-react';
-import { useState } from 'react';
+import { Mail, MapPin, Phone, Github, Linkedin, MessageCircle } from 'lucide-react';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsSubmitting(false);
-    
-    // Show success message (you can implement a proper notification system)
-    alert('Message sent successfully! I\'ll get back to you soon.');
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -99,7 +68,7 @@ const Contact = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="max-w-4xl mx-auto">
             {/* Contact Information */}
             <motion.div variants={itemVariants} className="space-y-8">
               <div className="glass-card p-8">
@@ -164,116 +133,8 @@ const Contact = () => {
                 </p>
               </div>
 
-              {/* Fun Fact */}
-              <motion.div 
-                variants={itemVariants}
-                className="glass-card p-8 bg-gradient-to-r from-purple-900/20 to-pink-900/20"
-              >
-                <h3 className="text-xl font-bold text-white mb-4">⚡ Quick Response</h3>
-                <p className="text-gray-300">
-                  I typically respond to emails within 24 hours. For urgent matters, feel free to reach out on LinkedIn for faster communication.
-                </p>
-              </motion.div>
             </motion.div>
 
-            {/* Contact Form */}
-            <motion.div variants={itemVariants}>
-              <div className="glass-card p-8">
-                <h3 className="text-2xl font-bold text-white mb-8">Send a Message</h3>
-                
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-gray-300 font-medium mb-2">
-                        Your Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-colors duration-200"
-                        placeholder="John Doe"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="email" className="block text-gray-300 font-medium mb-2">
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-colors duration-200"
-                        placeholder="john@example.com"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="subject" className="block text-gray-300 font-medium mb-2">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-colors duration-200"
-                      placeholder="Project Collaboration"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-gray-300 font-medium mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-colors duration-200 resize-none"
-                      placeholder="Tell me about your project ideas, goals, and how we can work together..."
-                    />
-                  </div>
-                  
-                  <motion.button
-                    type="submit"
-                    disabled={isSubmitting}
-                    whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
-                    whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
-                    className={`w-full flex items-center justify-center gap-3 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 ${
-                      isSubmitting
-                        ? 'bg-gray-600 cursor-not-allowed'
-                        : 'bg-purple-600 hover:bg-purple-700 glow-effect'
-                    } text-white`}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send size={20} />
-                        Send Message
-                      </>
-                    )}
-                  </motion.button>
-                </form>
-              </div>
-            </motion.div>
           </div>
 
           {/* Footer */}
