@@ -10,9 +10,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Khaled Tahoon | Software Engineer & Innovator',
   description: 'Software Engineer, Student, and Innovator specializing in Flutter, Python, Machine Learning, and modern web technologies. Building the future one line of code at a time.',
-  keywords: ['Software Engineer', 'Flutter Developer', 'Machine Learning', 'Python', 'TypeScript', 'Computer Vision', 'UTM Student'],
+  keywords: ['Software Engineer', 'Flutter Developer', 'Machine Learning', 'Python', 'Computer Vision', 'UTM Student'],
   authors: [{ name: 'Khaled Tahoon' }],
   creator: 'Khaled Tahoon',
+  icons: {
+    icon: '/favicon.svg',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',

@@ -89,13 +89,13 @@ const About = () => {
                     <p className="text-sm text-gray-500 mt-2">Currently Pursuing</p>
                   </div>
                   
-                  <div className="border-l-4 border-green-500 pl-6">
+                  <div className="border-l-4 border-blue-500 pl-6">
                     <h4 className="text-xl font-semibold text-white mb-2">
                       AI Diploma
                     </h4>
-                    <p className="text-green-400 mb-2">Artificial Intelligence & Machine Learning</p>
+                    <p className="text-blue-400 mb-2">Artificial Intelligence & Machine Learning</p>
                     <p className="text-gray-400">Instant Software Solutions</p>
-                    <p className="text-sm text-green-500 mt-2">Completed</p>
+                    <p className="text-sm text-blue-500 mt-2">Currently Taking</p>
                   </div>
                 </div>
               </div>

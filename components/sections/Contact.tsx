@@ -140,10 +140,10 @@ const Contact = () => {
           {/* Footer */}
           <motion.div variants={itemVariants} className="text-center pt-16 border-t border-gray-800">
             <p className="text-gray-400 mb-4">
-              © 2025 Khaled Tahoon. Built with Next.js, TypeScript, and lots of ☕
+              © 2025 Khaled Tahoon.
             </p>
             <p className="text-gray-500 text-sm">
-              Designed and developed with passion for creating exceptional digital experiences.
+              Designed and developed with passion.
             </p>
           </motion.div>
         </motion.div>

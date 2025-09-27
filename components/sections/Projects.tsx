@@ -40,22 +40,23 @@ const Projects = () => {
       id: 2,
       title: 'BRAIN TUMOR AI DETECTOR',
       subtitle: 'Deep Learning for Medical Imaging',
-      description: 'A deep learning model that detects brain tumors from MRI scans with high accuracy. Built using TensorFlow and transfer learning to support medical diagnosis.',
-      story: 'This project was born from the need to assist medical professionals in early detection of brain tumors through advanced AI technology. The challenge was to create a reliable model that could analyze complex medical imaging data with high precision.',
+      description: 'An AI-powered web application for detecting and segmenting brain tumors in MRI images using deep learning models. Features both classification and segmentation capabilities with a user-friendly FastAPI interface.',
+      story: 'This project began as an exploration into applying deep learning to medical imaging. I wanted to solve a real-world problem: detecting brain tumors from MRI scans. The journey included data preparation, model development, evaluation using accuracy and precision metrics, and deployment into a FastAPI web application with Docker containerization.',
       features: [
-        'High-accuracy brain tumor detection',
-        'TensorFlow deep learning implementation',
-        'Transfer learning optimization',
-        'Medical imaging preprocessing',
-        'Real-time MRI scan analysis',
-        'Support for medical diagnosis workflows'
+        'Classification: Predicts tumor presence using InceptionV3 transfer learning',
+        'Segmentation: U-Net model generates tumor mask overlays',
+        'Web App: User-friendly FastAPI interface for upload and results',
+        'Deployment: Fully containerized with Docker for cloud deployment',
+        'Stateless API: Processes results without storing patient data',
+        'Visualization: Returns overlay images with tumor highlighted in red',
+        'Logging: Records predictions with timestamps for monitoring'
       ],
-      image: 'https://images.pexels.com/photos/5723883/pexels-photo-5723883.jpeg?auto=compress&cs=tinysrgb&w=800',
-      mockupImage: 'https://images.pexels.com/photos/5723883/pexels-photo-5723883.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Python', 'TensorFlow', 'Keras', 'OpenCV', 'NumPy', 'Matplotlib'],
-      github: 'https://github.com/komsait/brain-tumor-ai-detector',
-      demo: 'https://brain-tumor-ai-detector.vercel.app',
-      status: 'In Development',
+      image: '/tumoraidetector.png',
+      mockupImage: '/tumoraidetector.png',
+      technologies: ['Python', 'TensorFlow', 'Keras', 'InceptionV3', 'U-Net', 'FastAPI', 'Docker', 'OpenCV', 'NumPy', 'Matplotlib'],
+      github: 'https://github.com/komsait/AI-BrainTumorDetection',
+      demo: 'https://tumorai.tahoonkhaled.com',
+      status: 'Completed',
       category: 'AI/ML',
       color: 'from-pink-500 to-pink-700'
     }
@@ -151,21 +152,6 @@ const Projects = () => {
                       </div>
                     </div>
                     
-                    {/* Floating "VIEW" circles */}
-                    <motion.div
-                      className="absolute -top-4 -right-4 w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-semibold text-sm"
-                      animate={{ 
-                        scale: [1, 1.1, 1],
-                        opacity: [0.7, 1, 0.7]
-                      }}
-                      transition={{ 
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      VIEW
-                    </motion.div>
                   </motion.div>
                 </div>
 

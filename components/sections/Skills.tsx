@@ -29,7 +29,6 @@ const Skills = () => {
       color: 'from-purple-500 to-pink-500',
       skills: [
         { name: 'Python', level: 95, icon: '🐍' },
-        { name: 'TypeScript', level: 88, icon: '🔷' },
         { name: 'C++', level: 80, icon: '⚡' },
       ],
     },
@@ -148,17 +147,15 @@ const Skills = () => {
             <div className="flex flex-wrap justify-center gap-4">
               {[
                 'Git & GitHub',
-                'Node.js',
                 'React',
-                'Next.js',
                 'TensorFlow',
                 'PyTorch',
                 'OpenCV',
                 'Pandas',
                 'NumPy',
                 'Firebase',
-                'MongoDB',
-                'PostgreSQL'
+                'PostgreSQL',
+                'Google Colab'
               ].map((tech, index) => (
                 <motion.span
                   key={tech}
