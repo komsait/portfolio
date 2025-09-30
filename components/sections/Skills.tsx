@@ -19,8 +19,8 @@ const Skills = () => {
       icon: Smartphone,
       color: 'from-blue-500 to-cyan-500',
       skills: [
-        { name: 'Flutter', level: 90, icon: '📱' },
-        { name: 'Dart', level: 85, icon: '🎯' },
+        { name: 'Flutter', level: 90, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg' },
+        { name: 'Dart', level: 85, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg' },
       ],
     },
     {
@@ -28,8 +28,8 @@ const Skills = () => {
       icon: Code,
       color: 'from-purple-500 to-pink-500',
       skills: [
-        { name: 'Python', level: 95, icon: '🐍' },
-        { name: 'C++', level: 80, icon: '⚡' },
+        { name: 'Python', level: 95, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+        { name: 'C++', level: 80, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
       ],
     },
     {
@@ -37,9 +37,9 @@ const Skills = () => {
       icon: Brain,
       color: 'from-green-500 to-emerald-500',
       skills: [
-        { name: 'Machine Learning', level: 85, icon: '🤖' },
-        { name: 'Deep Learning', level: 80, icon: '🧠' },
-        { name: 'Computer Vision', level: 75, icon: '👁️' },
+        { name: 'Machine Learning', level: 85, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
+        { name: 'Deep Learning', level: 80, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
+        { name: 'Computer Vision', level: 75, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
       ],
     },
     {
@@ -47,8 +47,8 @@ const Skills = () => {
       icon: Database,
       color: 'from-orange-500 to-red-500',
       skills: [
-        { name: 'SQL', level: 85, icon: '🗄️' },
-        { name: 'FastAPI', level: 80, icon: '⚡' },
+        { name: 'SQL', level: 85, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+        { name: 'FastAPI', level: 80, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
       ],
     },
     {
@@ -56,8 +56,8 @@ const Skills = () => {
       icon: Container,
       color: 'from-indigo-500 to-purple-500',
       skills: [
-        { name: 'Docker', level: 75, icon: '🐳' },
-        { name: 'Electron', level: 70, icon: '⚛️' },
+        { name: 'Docker', level: 75, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+        { name: 'Electron', level: 70, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/electron/electron-original.svg' },
       ],
     },
   ];
@@ -128,7 +128,11 @@ const Skills = () => {
                     {category.skills.map((skill, skillIndex) => (
                       <div key={skill.name} className="space-y-2">
                         <div className="flex items-center gap-2 text-gray-300 font-medium">
-                          <span className="text-lg">{skill.icon}</span>
+                          <img 
+                            src={skill.icon} 
+                            alt={skill.name}
+                            className="w-5 h-5"
+                          />
                           {skill.name}
                         </div>
                       </div>
