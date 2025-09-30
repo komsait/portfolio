@@ -55,10 +55,35 @@ const Projects = () => {
       mockupImage: '/tumoraidetector.png',
       technologies: ['Python', 'TensorFlow', 'Keras', 'InceptionV3', 'U-Net', 'FastAPI', 'Docker', 'OpenCV', 'NumPy', 'Matplotlib'],
       github: 'https://github.com/komsait/AI-BrainTumorDetection',
-      demo: 'https://tumorai.tahoonkhaled.com',
+      demo: 'https://aitumor.tahoonkhaled.com',
       status: 'Completed',
       category: 'AI/ML',
       color: 'from-pink-500 to-pink-700'
+    },
+    {
+      id: 3,
+      title: 'AI LICENSE PLATE DETECTOR',
+      subtitle: 'Real-time License Plate Detection & OCR',
+      description: 'An AI-powered license plate detection and text recognition system using YOLOv8 and EasyOCR. Provides real-time license plate detection from video files with high accuracy and a modern dark-themed web interface.',
+      story: 'This project was developed to solve the challenge of automated license plate recognition from video streams. I implemented a complete pipeline using YOLOv8 for detection, advanced image preprocessing for OCR enhancement, and EasyOCR for text extraction. The system includes smart duplicate detection and CSV export functionality for practical applications.',
+      features: [
+        'Real-time video processing with YOLOv8 detection',
+        'Advanced OCR with EasyOCR integration',
+        'Image preprocessing: 3x upscaling, grayscale conversion, Gaussian blur',
+        'Otsu thresholding and morphological operations for text clarity',
+        'Smart duplicate detection with fuzzy string matching',
+        'CSV export functionality for detected license plates',
+        'Modern Streamlit web interface with dark theme',
+        'Configurable confidence filtering (>30% threshold)'
+      ],
+      image: '/license.png',
+      mockupImage: '/license.png',
+      technologies: ['Python', 'YOLOv8', 'EasyOCR', 'Streamlit', 'OpenCV', 'NumPy', 'Pandas', 'PyTorch', 'Ultralytics'],
+      github: 'https://github.com/komsait/License-Plate-Detector',
+      demo: 'https://github.com/komsait/License-Plate-Detector',
+      status: 'Completed',
+      category: 'AI/ML',
+      color: 'from-blue-500 to-blue-700'
     }
   ];
 
